@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <!-- 背景 -->
+  <rect width="300" height="200" fill="#fff"/>
+  <!-- 红色条纹 -->
+  <path fill="#B22234" d="M0,15.4h300v15.4H0zm0,30.8h300v15.4H0zm0,30.8h300v15.4H0zm0,30.8h300v15.4H0zm0,30.8h300v15.4H0zm0,30.8h300v15.4H0z"/>
+  <!-- 蓝色区域 -->
+  <rect width="120" height="107.7" fill="#3C3B6E"/>
+  <!-- 星星 -->
+  <g fill="#fff">
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(11, 10) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(35, 10) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(59, 10) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(83, 10) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(107, 10) scale(0.9)"/>
+    
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(23, 25) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(47, 25) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(71, 25) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(95, 25) scale(0.9)"/>
+    
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(11, 40) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(35, 40) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(59, 40) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(83, 40) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(107, 40) scale(0.9)"/>
+    
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(23, 55) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(47, 55) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(71, 55) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(95, 55) scale(0.9)"/>
+    
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(11, 70) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(35, 70) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(59, 70) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(83, 70) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(107, 70) scale(0.9)"/>
+    
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(23, 85) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(47, 85) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(71, 85) scale(0.9)"/>
+    <path d="M10,10 l3.1,9.5h10l-8.1,5.9l3.1,9.5l-8.1-5.9l-8.1,5.9l3.1-9.5l-8.1-5.9h10z" transform="translate(95, 85) scale(0.9)"/>
+  </g>
+</svg> 

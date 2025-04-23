@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <!-- 红色背景 -->
+  <rect width="300" height="200" fill="#FF0000"/>
+  
+  <!-- 白色十字 -->
+  <path fill="#fff" d="M120,80 h60 v-30 h30 v60 h30 v30 h-30 v30 h-30 v-30 h-60 v-30 h30 v-30z"/>
+</svg> 
