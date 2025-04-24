@@ -13,8 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Travel China - Your Complete Guide",
+  title: "Travel China",
   description: "Complete travel guide for international visitors to China - visa, customs, navigation, tours and attractions",
+  icons: {
+    icon: "/lantern.svg",
+    apple: "/lantern.svg"
+  },
 };
 
 export default function RootLayout({

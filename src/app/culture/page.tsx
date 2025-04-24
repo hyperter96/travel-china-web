@@ -159,8 +159,16 @@ export default function CulturePage() {
       <Header />
       
       <div className="container mx-auto px-4 py-12">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Chinese Cultural Etiquette</h1>
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-4 mb-8">
+            <Image 
+              src="/lantern.svg" 
+              alt="Chinese Lantern Icon" 
+              width={48} 
+              height={48} 
+            />
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Chinese Culture</h1>
+          </div>
           
           <div className="prose dark:prose-invert max-w-none mb-12">
             <p className="text-lg">

@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Image from 'next/image';
 
 export default function VisaPage() {
   return (
@@ -8,7 +9,15 @@ export default function VisaPage() {
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Visa & Entry Information</h1>
+          <div className="flex items-center gap-4 mb-8">
+            <Image 
+              src="/lantern.svg" 
+              alt="Chinese Lantern Icon" 
+              width={48} 
+              height={48} 
+            />
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Visa & Entry Information</h1>
+          </div>
           
           <div className="prose prose-lg max-w-none">
             <p className="lead text-xl mb-8">

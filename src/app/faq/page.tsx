@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function FAQPage() {
   const faqData = [
@@ -85,7 +86,15 @@ export default function FAQPage() {
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Frequently Asked Questions</h1>
+          <div className="flex items-center gap-4 mb-8">
+            <Image 
+              src="/lantern.svg" 
+              alt="Chinese Lantern Icon" 
+              width={48} 
+              height={48} 
+            />
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Frequently Asked Questions</h1>
+          </div>
           
           <p className="text-lg text-foreground/80 mb-12">
             Find answers to the most common questions about traveling to China. 

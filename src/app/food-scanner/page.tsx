@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Image from 'next/image';
@@ -10,7 +13,15 @@ export default function FoodScannerPage() {
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Visual Food Ordering</h1>
+          <div className="flex items-center gap-4 mb-8">
+            <Image 
+              src="/lantern.svg" 
+              alt="Chinese Lantern Icon" 
+              width={48} 
+              height={48} 
+            />
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Food Scanner</h1>
+          </div>
           
           <div className="prose prose-lg max-w-none">
             <p className="lead text-xl mb-8">
@@ -20,7 +31,7 @@ export default function FoodScannerPage() {
             
             <div className="relative h-64 md:h-80 rounded-xl overflow-hidden my-8">
               <Image
-                src="/assets/images/chinese-food.jpg"
+                src="/assets/images/chinese-food.png"
                 alt="Chinese Food Scanner"
                 fill
                 className="object-cover"

@@ -1,20 +1,47 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Image from 'next/image';
 
+interface Currency {
+  code: string;
+  name: string;
+  flag: string;
+}
+
+interface ExchangeRates {
+  [key: string]: number;
+}
+
+interface Expense {
+  item: string;
+  price: string;
+}
+
 export default function CurrencyPage() {
-  const currencies = [
-    { code: "USD", name: "US Dollar", flag: "/assets/images/flags/us.svg", rate: 1.00 },
-    { code: "CNY", name: "Chinese Yuan", flag: "/assets/images/flags/cn.svg", rate: 7.24 },
-    { code: "EUR", name: "Euro", flag: "/assets/images/flags/eu.svg", rate: 0.92 },
-    { code: "GBP", name: "British Pound", flag: "/assets/images/flags/gb.svg", rate: 0.79 },
-    { code: "JPY", name: "Japanese Yen", flag: "/assets/images/flags/jp.svg", rate: 151.53 },
-    { code: "AUD", name: "Australian Dollar", flag: "/assets/images/flags/au.svg", rate: 1.53 },
-    { code: "CAD", name: "Canadian Dollar", flag: "/assets/images/flags/ca.svg", rate: 1.38 },
-    { code: "CHF", name: "Swiss Franc", flag: "/assets/images/flags/ch.svg", rate: 0.90 }
+  const [amount, setAmount] = useState<number>(100);
+  const [fromCurrency, setFromCurrency] = useState<string>('USD');
+  const [toCurrency, setToCurrency] = useState<string>('CNY');
+  const [convertedAmount, setConvertedAmount] = useState<number>(0);
+  const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+  const [error, setError] = useState<string | null>(null);
+
+  const currencies: Currency[] = [
+    { code: "USD", name: "US Dollar", flag: "/assets/images/flags/us.svg" },
+    { code: "CNY", name: "Chinese Yuan", flag: "/assets/images/flags/cn.svg" },
+    { code: "EUR", name: "Euro", flag: "/assets/images/flags/eu.svg" },
+    { code: "GBP", name: "British Pound", flag: "/assets/images/flags/gb.svg" },
+    { code: "JPY", name: "Japanese Yen", flag: "/assets/images/flags/jp.svg" },
+    { code: "AUD", name: "Australian Dollar", flag: "/assets/images/flags/au.svg" },
+    { code: "CAD", name: "Canadian Dollar", flag: "/assets/images/flags/ca.svg" },
+    { code: "CHF", name: "Swiss Franc", flag: "/assets/images/flags/ch.svg" }
   ];
 
-  const commonExpenses = [
+  const commonExpenses: Expense[] = [
     { item: "Metro/Subway Ticket", price: "3-10 CNY" },
     { item: "Taxi (per km)", price: "2.5-3.5 CNY" },
     { item: "Street Food Meal", price: "15-30 CNY" },
@@ -26,21 +53,92 @@ export default function CurrencyPage() {
     { item: "Museum/Attraction Entrance", price: "40-120 CNY" }
   ];
 
+  useEffect(() => {
+    fetchExchangeRates();
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(exchangeRates).length > 0) {
+      convertCurrency();
+    }
+  }, [fromCurrency, toCurrency, amount, exchangeRates]);
+
+  const fetchExchangeRates = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const response = await fetch('https://open.er-api.com/v6/latest/USD');
+      if (!response.ok) {
+        throw new Error('Unable to fetch exchange rate data');
+      }
+      const data = await response.json();
+      setExchangeRates(data.rates);
+      setLastUpdated(new Date(data.time_last_update_utc));
+      setIsLoading(false);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      setError(errorMessage);
+      setIsLoading(false);
+    }
+  };
+
+  const convertCurrency = () => {
+    if (!exchangeRates[fromCurrency] || !exchangeRates[toCurrency]) return;
+    
+    const rate = exchangeRates[toCurrency] / exchangeRates[fromCurrency];
+    const result = amount * rate;
+    setConvertedAmount(result);
+  };
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAmount(Number(e.target.value));
+  };
+
+  const handleFromCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFromCurrency(e.target.value);
+  };
+
+  const handleToCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setToCurrency(e.target.value);
+  };
+
+  const handleConvert = () => {
+    convertCurrency();
+  };
+
+  const refreshRates = () => {
+    fetchExchangeRates();
+  };
+
   return (
     <main>
       <Header />
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Currency Converter</h1>
+          <div className="flex items-center gap-4 mb-8">
+            <Image 
+              src="/lantern.svg" 
+              alt="Chinese Lantern Icon" 
+              width={48} 
+              height={48} 
+            />
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Currency Converter</h1>
+          </div>
           
           <p className="text-lg text-foreground/80 mb-12">
-            Plan your budget for China with our currency converter. The Chinese currency is the Renminbi (RMB), 
-            and its basic unit is the Yuan (¥ or CNY). Current exchange rates are updated daily.
+            Plan your budget for China with our currency converter. The Chinese currency is the Renminbi (RMB),
+            and its basic unit is the Yuan (¥ or CNY). Exchange rates are updated daily.
           </p>
           
           <div className="bg-muted p-8 rounded-lg my-8">
             <h2 className="text-2xl font-semibold mb-6">Currency Converter</h2>
+            
+            {error && (
+              <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
+                Error: {error}. Please <button className="underline" onClick={refreshRates}>try again</button>
+              </div>
+            )}
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -51,12 +149,14 @@ export default function CurrencyPage() {
                     id="amount" 
                     className="w-full p-3 border border-border rounded-l-md bg-background focus:outline-none focus:ring-2 focus:ring-primary/30"
                     placeholder="Enter amount"
-                    defaultValue="100"
+                    value={amount}
+                    onChange={handleAmountChange}
                   />
                   <select 
                     id="from-currency" 
                     className="p-3 border border-l-0 border-border rounded-r-md bg-background focus:outline-none focus:ring-2 focus:ring-primary/30"
-                    defaultValue="USD"
+                    value={fromCurrency}
+                    onChange={handleFromCurrencyChange}
                   >
                     {currencies.map((currency) => (
                       <option key={currency.code} value={currency.code}>
@@ -75,13 +175,14 @@ export default function CurrencyPage() {
                     id="result" 
                     className="w-full p-3 border border-border rounded-l-md bg-background focus:outline-none focus:ring-2 focus:ring-primary/30"
                     placeholder="Result"
-                    defaultValue="724"
+                    value={convertedAmount.toFixed(2)}
                     readOnly
                   />
                   <select 
                     id="to-currency" 
                     className="p-3 border border-l-0 border-border rounded-r-md bg-background focus:outline-none focus:ring-2 focus:ring-primary/30"
-                    defaultValue="CNY"
+                    value={toCurrency}
+                    onChange={handleToCurrencyChange}
                   >
                     {currencies.map((currency) => (
                       <option key={`to-${currency.code}`} value={currency.code}>
@@ -94,13 +195,24 @@ export default function CurrencyPage() {
             </div>
             
             <div className="flex justify-center mt-6">
-              <button className="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-medium transition-colors">
-                Convert
+              <button 
+                className="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-medium transition-colors"
+                onClick={handleConvert}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Loading...' : 'Convert'}
+              </button>
+              <button 
+                className="inline-flex items-center justify-center bg-muted/70 hover:bg-muted text-foreground px-6 py-3 rounded-md font-medium transition-colors ml-2"
+                onClick={refreshRates}
+                disabled={isLoading}
+              >
+                Refresh Rates
               </button>
             </div>
             
             <p className="text-sm text-foreground/60 text-center mt-4">
-              Exchange rates last updated: {new Date().toLocaleDateString()}
+              Exchange rates last updated: {lastUpdated.toLocaleString()}
             </p>
           </div>
           
@@ -116,26 +228,36 @@ export default function CurrencyPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
-                {currencies.map((currency) => (
-                  <tr key={currency.code} className="hover:bg-muted/50">
-                    <td className="p-3">
-                      <div className="flex items-center">
-                        <div className="w-6 h-6 mr-2 rounded overflow-hidden flex-shrink-0">
-                          <Image 
-                            src={currency.flag} 
-                            alt={`${currency.name} flag`} 
-                            width={24} 
-                            height={24}
-                          />
-                        </div>
-                        {currency.name}
-                      </div>
-                    </td>
-                    <td className="p-3 font-mono">{currency.code}</td>
-                    <td className="p-3 text-right font-mono">{currency.rate.toFixed(2)} {currency.code}</td>
-                    <td className="p-3 text-right font-mono">{(1/currency.rate).toFixed(4)} USD</td>
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={4} className="p-3 text-center">Loading...</td>
                   </tr>
-                ))}
+                ) : (
+                  currencies.map((currency) => (
+                    <tr key={currency.code} className="hover:bg-muted/50">
+                      <td className="p-3">
+                        <div className="flex items-center">
+                          <div className="w-6 h-6 mr-2 rounded overflow-hidden flex-shrink-0">
+                            <Image 
+                              src={currency.flag} 
+                              alt={`${currency.name} flag`} 
+                              width={24} 
+                              height={24}
+                            />
+                          </div>
+                          {currency.name}
+                        </div>
+                      </td>
+                      <td className="p-3 font-mono">{currency.code}</td>
+                      <td className="p-3 text-right font-mono">
+                        {exchangeRates[currency.code] ? exchangeRates[currency.code].toFixed(2) : '...'} {currency.code}
+                      </td>
+                      <td className="p-3 text-right font-mono">
+                        {exchangeRates[currency.code] ? (1/exchangeRates[currency.code]).toFixed(4) : '...'} USD
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
