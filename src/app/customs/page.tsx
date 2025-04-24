@@ -21,7 +21,7 @@ export default function CustomsPage() {
           
           <div className="prose prose-lg max-w-none">
             <p className="lead text-xl mb-8">
-              Important information about China's customs regulations, declaration procedures, 
+              Important information about China&apos;s customs regulations, declaration procedures, 
               prohibited items, and duty-free allowances for international travelers.
             </p>
             
@@ -54,7 +54,7 @@ export default function CustomsPage() {
             <div className="bg-muted p-6 rounded-lg my-8">
               <h3 className="text-xl font-medium mb-3">Tip for Smooth Customs Clearance</h3>
               <p>
-                Keep receipts for valuable items you're bringing into China. Having proof of purchase 
+                Keep receipts for valuable items you&apos;re bringing into China. Having proof of purchase 
                 can help avoid any confusion about whether the items are for personal use or commercial purposes.
               </p>
             </div>
@@ -72,7 +72,7 @@ export default function CustomsPage() {
                   <li>Firearms, ammunition, and explosives</li>
                   <li>Counterfeit currency and securities</li>
                   <li>Poisonous materials</li>
-                  <li>Materials that are harmful to China's politics, economy, culture, and morals</li>
+                  <li>Materials that are harmful to China&apos;s politics, economy, culture, and morals</li>
                   <li>Endangered animal and plant species</li>
                   <li>Certain foods, fruits, and plants</li>
                 </ul>
@@ -126,8 +126,8 @@ export default function CustomsPage() {
                 export certificates to leave the country legally.
               </p>
               <p className="mt-3">
-                Tax refunds are available for certain purchases made at designated tax-free shops when 
-                leaving the country. Keep your receipts and look for the "Tax Refund" sign in participating stores.
+                Tax refunds are available for certain purchases made at designated &quot;Tax Refund&quot; shops when 
+                leaving the country. Keep your receipts and look for the &quot;Tax Refund&quot; sign in participating stores.
               </p>
             </div>
           </div>

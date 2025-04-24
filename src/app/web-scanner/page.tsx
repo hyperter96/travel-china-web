@@ -24,7 +24,7 @@ export default function WebScannerPage() {
           
           <div className="prose prose-lg max-w-none">
             <p className="lead text-xl mb-8">
-              Use your device's camera to scan Chinese menu items and get instant translations and dish information.
+              Use your device&apos;s camera to scan Chinese menu items and get instant translations and dish information.
             </p>
             
             <div className="bg-muted p-8 rounded-lg my-8 text-center">
@@ -49,13 +49,13 @@ export default function WebScannerPage() {
               </div>
               
               <p className="text-sm text-foreground/60 mt-4">
-                You'll need to grant camera permissions when prompted
+                You&apos;ll need to grant camera permissions when prompted
               </p>
             </div>
             
             <h2 className="text-2xl font-semibold mt-12 mb-4">How to Use the Web Scanner</h2>
             <ol className="list-decimal pl-5 my-4 space-y-3">
-              <li>Click "Start Camera" to activate your device's camera</li>
+              <li>Click &quot;Start Camera&quot; to activate your device&apos;s camera</li>
               <li>Point the camera at a Chinese menu item or dish</li>
               <li>Hold steady for a moment while our AI analyzes the image</li>
               <li>View the translation, dish information, and ingredients</li>
@@ -66,7 +66,7 @@ export default function WebScannerPage() {
               <h3 className="text-xl font-medium mb-3">Alternatively</h3>
               <p>
                 If you prefer not to use your camera, you can upload an image of a menu or dish 
-                by clicking the "Upload Image" button.
+                by clicking the &quot;Upload Image&quot; button.
               </p>
             </div>
             

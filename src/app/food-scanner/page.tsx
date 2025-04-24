@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Image from 'next/image';
@@ -94,7 +93,7 @@ export default function FoodScannerPage() {
               <li>Image recognition for visual identification of dishes</li>
               <li>Detailed descriptions of ingredients and preparation methods</li>
               <li>Dietary restriction filters (vegetarian, gluten-free, etc.)</li>
-              <li>Popular recommendations based on other travelers' choices</li>
+              <li>Popular recommendations based on other travelers&apos; choices</li>
               <li>Offline functionality for use without internet connection</li>
               <li>Phrase guide for communicating with restaurant staff</li>
             </ul>
@@ -102,8 +101,8 @@ export default function FoodScannerPage() {
             <div className="bg-muted p-6 rounded-lg my-8">
               <h3 className="text-xl font-medium mb-3">Pro Tip</h3>
               <p>
-                Even when using our app, it's helpful to learn a few basic food-related phrases in Chinese. 
-                Check our "Essential Chinese Phrases" guide for common dining expressions.
+                Even when using our app, it&apos;s helpful to learn a few basic food-related phrases in Chinese. 
+                Check our &quot;Essential Chinese Phrases&quot; guide for common dining expressions.
               </p>
             </div>
             

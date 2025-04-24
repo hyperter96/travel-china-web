@@ -98,7 +98,7 @@ export default function FAQPage() {
           
           <p className="text-lg text-foreground/80 mb-12">
             Find answers to the most common questions about traveling to China. 
-            If you don't see your question answered here, please <Link href="/contact" className="text-primary hover:underline">contact us</Link>.
+            If you don&apos;t see your question answered here, please <Link href="/contact" className="text-primary hover:underline">contact us</Link>.
           </p>
           
           <div className="space-y-4">
@@ -168,8 +168,8 @@ export default function FAQPage() {
           <div className="bg-primary/10 p-6 rounded-lg mt-12">
             <h2 className="text-2xl font-semibold mb-4">Have More Questions?</h2>
             <p className="mb-6">
-              We're here to help make your trip to China as smooth and enjoyable as possible. 
-              If you have questions that aren't covered in our FAQ, please don't hesitate to reach out.
+              We&apos;re here to help make your trip to China as smooth and enjoyable as possible. 
+              If you have questions that aren&apos;t covered in our FAQ, please don&apos;t hesitate to reach out.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 

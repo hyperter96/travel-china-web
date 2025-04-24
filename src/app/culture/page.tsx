@@ -264,11 +264,11 @@ export default function CulturePage() {
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2">•</span>
-                <span>The number "4" is considered unlucky in China because it sounds similar to the word for "death." Avoid giving gifts containing four items.</span>
+                <span>The number &quot;4&quot; is considered unlucky in China because it sounds similar to the word for &quot;death.&quot; Avoid giving gifts containing four items.</span>
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2">•</span>
-                <span>Don't be loud or overly conspicuous in public places, as this may be considered lacking in good manners.</span>
+                <span>Don&apos;t be loud or overly conspicuous in public places, as this may be considered lacking in good manners.</span>
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2">•</span>
@@ -276,7 +276,7 @@ export default function CulturePage() {
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2">•</span>
-                <span>Don't photograph military facilities, government buildings, or security checkpoints, as this may cause problems.</span>
+                <span>Don&apos;t photograph military facilities, government buildings, or security checkpoints, as this may cause problems.</span>
               </li>
             </ul>
           </div>

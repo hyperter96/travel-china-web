@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function TestimonialSection() {
@@ -50,7 +53,7 @@ export default function TestimonialSection() {
                 </div>
               </div>
               
-              <p className="text-foreground/80">"{testimonial.content}"</p>
+              <p className="text-foreground/80">&ldquo;{testimonial.content}&rdquo;</p>
               
               <div className="mt-6 flex">
                 {[...Array(5)].map((_, i) => (
