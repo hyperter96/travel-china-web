@@ -3,11 +3,11 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 
 export default function FAQPage() {
-  const faqData = [
+  const faqData = useMemo(() => [
     {
       question: "Do I need a visa to visit China?",
       answer: "Most foreign nationals require a visa to enter China. Depending on your nationality and purpose of visit, you may need a tourist (L), business (M), or other type of visa. Some nationalities are eligible for visa-free transit for 72 or 144 hours under specific conditions."
@@ -48,7 +48,7 @@ export default function FAQPage() {
       question: "How can I recognize authentic Chinese cuisine?",
       answer: "China has eight major culinary traditions with distinct characteristics. Look for restaurants with local customers, specific regional designations, or use our Food Scanner tool to identify authentic dishes. Restaurants in tourist areas often offer English menus but may serve modified versions of traditional dishes."
     }
-  ];
+  ], []);
 
   const [expandedItems, setExpandedItems] = useState<number[]>([0]); // 默认展开第一个
   const [heights, setHeights] = useState<{[key: number]: number}>({});
@@ -58,18 +58,18 @@ export default function FAQPage() {
     // 初始化时测量所有答案的高度
     faqData.forEach((_, index) => {
       if (answerRefs.current[index]) {
-        setHeights(prev => ({
+        setHeights((prev: {[key: number]: number}) => ({
           ...prev,
           [index]: answerRefs.current[index]?.scrollHeight || 0
         }));
       }
     });
-  }, []);
+  }, []); // 移除faqData依赖，因为我们已经使用useMemo记忆化了
 
   const toggleItem = (index: number) => {
-    setExpandedItems(prev => 
+    setExpandedItems((prev: number[]) => 
       prev.includes(index) 
-        ? prev.filter(item => item !== index) 
+        ? prev.filter((item: number) => item !== index) 
         : [...prev, index]
     );
   };

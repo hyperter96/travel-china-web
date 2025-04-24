@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Image from 'next/image';
@@ -53,17 +53,7 @@ export default function CurrencyPage() {
     { item: "Museum/Attraction Entrance", price: "40-120 CNY" }
   ];
 
-  useEffect(() => {
-    fetchExchangeRates();
-  }, []);
-
-  useEffect(() => {
-    if (Object.keys(exchangeRates).length > 0) {
-      convertCurrency();
-    }
-  }, [fromCurrency, toCurrency, amount, exchangeRates]);
-
-  const fetchExchangeRates = async () => {
+  const fetchExchangeRates = useCallback(async () => {
     try {
       setIsLoading(true);
       setError(null);
@@ -80,15 +70,21 @@ export default function CurrencyPage() {
       setError(errorMessage);
       setIsLoading(false);
     }
-  };
+  }, []);
 
-  const convertCurrency = () => {
-    if (!exchangeRates[fromCurrency] || !exchangeRates[toCurrency]) return;
-    
-    const rate = exchangeRates[toCurrency] / exchangeRates[fromCurrency];
-    const result = amount * rate;
-    setConvertedAmount(result);
-  };
+  useEffect(() => {
+    fetchExchangeRates();
+  }, [fetchExchangeRates]);
+
+  useEffect(() => {
+    if (Object.keys(exchangeRates).length > 0) {
+      if (exchangeRates[fromCurrency] && exchangeRates[toCurrency]) {
+        const rate = exchangeRates[toCurrency] / exchangeRates[fromCurrency];
+        const result = amount * rate;
+        setConvertedAmount(result);
+      }
+    }
+  }, [fromCurrency, toCurrency, amount, exchangeRates]);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(Number(e.target.value));
@@ -103,7 +99,7 @@ export default function CurrencyPage() {
   };
 
   const handleConvert = () => {
-    convertCurrency();
+    fetchExchangeRates();
   };
 
   const refreshRates = () => {
